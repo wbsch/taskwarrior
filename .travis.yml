@@ -8,12 +8,12 @@ before_install:
   - sudo apt-get update -qq
 
 install: 
-  - sudo apt-get install -qq g++-5 uuid-dev
+  - sudo apt-get install -qq g++-5 uuid-dev faketime libfaketime
 
 script: 
   - cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_SYNC=OFF .
   - make
   - cd test
-  - ./run_all -v
+  - ./run_all
   - ./problems
 
