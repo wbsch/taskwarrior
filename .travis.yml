@@ -1,0 +1,19 @@
+sudo: require
+language: cpp
+compiler: gcc
+dist: trusty
+
+before_install:
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
+
+install: 
+  - sudo apt-get install -qq g++-5 uuid-dev
+
+script: 
+  - cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_SYNC=OFF .
+  - make
+  - cd test
+  - ./run_all -v
+  - ./problems
+
